@@ -11,12 +11,12 @@ Supply chain security is a priority for secureblue. During the the build process
 ## Definitions
 
 
-| Security mechanism      | Secures privileged Wayland protocols? | Thumbnailer sandboxing? | Stability    | Recommendation                  |
+| Security mechanism  | Implementation tooling | Threat vector | Mitigation logic | Scope   |
 |------------|---------------------------------------|-------------------------|--------------|---------------------------------|
-| GNOME      | Yes                                   | Weak                    | Stable       | Recommended                     |
-| KDE Plasma | Yes                                   | None                    | Stable       | Recommended                     |
-| Sway       | Yes                                   | Weak                    | Stable       | Recommended for tiling WM users |
-| COSMIC     | Yes                                   | None                    | Beta         | Not currently recommended       |
+| Build provenance      | [SLSA](https://slsa.dev)                                   | Weak                    | Stable       | Recommended                     |
+| Signatures | Yes                                   | None                    | Stable       | Recommended                     |
+| ISO signatures     | Yes                                   | None                    | Beta         | Not currently recommended       |
+| Egress auditing
 
 
 Flatpak is an application packaging and distribution system for desktop Linux. It uses Bubblewrap under the hood to sandbox those applications and provide desktop Linux with a de facto standard sandboxing and permissions system. However, it has flaws and its sandboxing strength can vary significantly depending on how it is configured. secureblue addresses these flaws in a couple different ways.
