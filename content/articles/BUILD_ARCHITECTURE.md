@@ -11,40 +11,9 @@ Supply chain security is a priority for secureblue. During the the build process
 ## Definitions
 
 
-| Security mechanism  | Implementation tooling | Threat vector | Mitigation logic | Scope   |
+| Security mechanism  | Implementation tooling | Threat vectors | Mitigation logic | Scope   |
 |------------|---------------------------------------|-------------------------|--------------|---------------------------------|
-| Build provenance      | [SLSA](https://slsa.dev)                                   | Weak                    | Stable       | Recommended                     |
-| Signatures | Yes                                   | None                    | Stable       | Recommended                     |
-| ISO signatures     | Yes                                   | None                    | Beta         | Not currently recommended       |
-| Egress auditing
-
-
-Flatpak is an application packaging and distribution system for desktop Linux. It uses Bubblewrap under the hood to sandbox those applications and provide desktop Linux with a de facto standard sandboxing and permissions system. However, it has flaws and its sandboxing strength can vary significantly depending on how it is configured. secureblue addresses these flaws in a couple different ways.
-
-As with any application sandboxing system, flatpaks should be scoped down by default to as few permissions as they need to function. Even better, permissions should be granted directly by the user at app runtime, like in Android. Sadly, neither of these are the case today. Flatpak manifest maintainers define the set of permissions they believe to be necessary and sufficient for the operation of their applications. When a flatpak is installed by a user, the flatpak's permissions default to those defined by the manifest.
-
-This is of course not ideal, but it's also [not a reason to abandon flatpak entirely](https://en.wikipedia.org/wiki/Perfect_is_the_enemy_of_good). There are many ways this issue can be mitigated, with different degrees of difficulty:
-
-- Users can configure permissions to their liking.
-- Users can submit issues and/or PRs to make changes to the default permissions for specific flatpaks.
-- Developers can, over the long term, improve flatpak and xdg portals to introduce a more robust permissions model.
-
-What secureblue does is provide a mitigation along the lines of the first option. We provide a `ujust` command to strip flatpaks of permissions by default, such that the user will need to specifically and deliberately grant permissions required by each application:
-
-```
-ujust flatpak-permissions-lockdown
-```
-
-This is not enabled out of the box on secureblue because it has a somewhat significant usability impact (many flatpaks will break due to missing permissions). Until the flatpak and xdg portal permissions model is improved, this is the most secure option we can offer. That said, users are still encouraged to report unnecessary permissions to upstream projects when found, while incremental development progresses on flatpak and portals.
-
-You can revert this change by running:
-
-```
-ujust flatpak-reset-global-overrides
-```
-
-Note that this will not only undo the the `ujust flatpak-permissions-lockdown` command but also any other global overrides (individual app overrides will not be affected). This also affects flatpak's hardened_malloc integration (which is set by default), so you should run this afterwards:
-
-```
-ujust harden-flatpak
-```
+| Provenance      | [SLSA](https://slsa.dev)                                   | <ul><li>Maintainer signing key theft</li><li>Rogue maintainers</li></ul> | To generate provenance, the build platform (in our case, GitHub Actions) generates and signs an attestation file containing metadata about the build environment. Crucially, it cryptographically attests to the authenticity of runner and the source commit on which the artifact is being built. This attestation is then published in the repository or registry alongside the artifact. On the client side, when the artifact is pulled, the signature of the attestation is validated against the build platform's public key and the contents of the attestation are validated to confirm that the artifact was built: on an authorized runner from a commit in a specific branch in the source repository protected by branch policies, pull request review, and maintainer login 2FA. This means that even in the event that a maintainer's artifact signing keys and artifact repository credentials were both stolen, any malicious builds pushed by the credential thief would be rejected by clients due to provenance validation. | All secureblue [OCI](https://opencontainers.org/) images, Trivalent RPM packages, Blue-Build build tools |
+| Signatures | [cosign](https://github.com/sigstore/cosign), [GPG](https://gnupg.org/) | <ul><li>Artifact tampering</li><li>Artifact forgery</li><li>Registry credential theft</li><ul> | A private key owned by the artifact maintainer is used in combination with a [hash](https://en.wikipedia.org/wiki/Cryptographic_hash_function) of the artifact to compute a [signature](https://en.wikipedia.org/wiki/Digital_signature). The signature is then provided alongside the artifact so that clients can verify the artifact signature before installing or using the artifact. For example, for our ISOs, each signature is shipped in a corresponding `-CHECKSUM` file. Once the client has all of the required information, it can use the maintainer's public key to verify the signature, revealing a hash that it then compares against a locally-generated hash of the artifact. This means that in the event that an artifact registry was compromised or artifacts otherwise tampered with by malicious third parties, any corresponding signature file would either not be present or fail validation. | All secureblue [OCI](https://opencontainers.org/) images, all secureblue ISOs and torrents, all secureblue RPM packages, all Fedora RPM packages, all Flatpaks from Flathub ([centrally signed](https://flathub.org/repo/flathub.gpg)), Blue-Build build tools |
+| Egress auditing|[StepSecurity Harden-Runner](https://docs.stepsecurity.io/harden-runner)|<ul><li>Maintainer secrets exfiltration</li><li>Source code tampering</li><li>Dependency tampering</li><li>Registry credential theft</li><ul>|StepSecurity Harden-Runner provides network traffic controls and source code integrity monitoring, among other mechanisms. It restricts outbound traffic to a configurable list of authorized outbound domains, and enforces this at multiple levels (DNS, HTTPS, network layer, transport layer). It has several other functions as well, like  monitoring the source code as the build progresses to ensure tampering doesn't occur, monitoring for anomalous privileged processes, etc.|All secureblue OCI image builds, Trivalent RPM builds|
+| Branch protection | [GitHub Rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) | <ul><li>Maintainer source code repository credential theft</li><li>Rogue maintainers</li></ul> | Branch protection via rulesets prevents any changes being made to secureblue source code without those changes first meeting specific criteria. Among those criteria is a minimum number of code reviews from maintainers, excluding of course the author of the pull request should they be a maintainer. This means that in the event that a maintainer's source code repository credentials were stolen, the thief would be unable to push changes to the repository. This includes the repo owner credentials, since bypassing rulesets is only possible after 2FA has been granted. |All secureblue source code repositories|
