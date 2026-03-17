@@ -213,7 +213,7 @@ If you need to update your system manually, for example after a severe CVE is pa
 ### [Why am I receiving so many vulnerability patch notifications?](#update-notifications)
 {: #update-notifications}
 
-Notifications are issued when the system detects kernel updates, Trivalent updates, and any other package updates that fix a [CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures). All kernel updates trigger a notification because all kernel updates contain bugfixes, and [all kernel bugs are security bugs](http://www.kroah.com/log/blog/2026/01/02/linux-kernel-security-work/). All Trivalent updates trigger a notification because Trivalent updates are pushed when Chromium CVEs are patched upstream. 
+Notifications are issued when the system detects kernel updates, Trivalent updates, and any other package updates that fix a [CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures). All kernel updates trigger a notification because all kernel updates contain bugfixes, and [all kernel bugs are security bugs](http://www.kroah.com/log/blog/2026/01/02/linux-kernel-security-work/). All Trivalent updates trigger a notification because Trivalent updates are pushed when Chromium CVEs are patched upstream.
 
 To check which packages triggered a vulnerability patch notification, check `rpm-ostree status --verbose` and `rpm-ostree db diff`. Note that the quantity and frequency of these notifications is not an indication of a higher rate of security issues. On the contrary, these are security issues which would face any desktop linux system. Unlike those systems however, secureblue ensures that the user is promptly informed when any security-relevant patch is available.
 
