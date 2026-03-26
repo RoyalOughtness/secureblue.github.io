@@ -18,7 +18,7 @@ There are multiple options available for donation:
 ## [Open Collective](#open-collective)
 {: #open-collective}
 
-[GitHub Sponsors](https://opencollective.com/secureblue)
+[Open Collective](https://opencollective.com/secureblue)
 
 ## [GitHub Sponsors (Integrated with Open Collective)](#github)
 {: #github}
