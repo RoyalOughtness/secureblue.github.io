@@ -202,7 +202,7 @@ Note that this does *not* affect the security of programs installed via Homebrew
 ### [Does secureblue use "linux-hardened"?](#linux-hardened)
 {: #linux-hardened}
 
-"linux-hardened" is the brand name for a specific set of kernel patches and builds on top of the mainline kernel, used by some distributions. secureblue doesn't use this kernel. Instead, we apply runtime configuration changes on top of our own Fedora-based kernel [build](https://github.com/secureblue/kernel). In the future, we plan to incorporate the [OpenPAX patches](https://github.com/edera-dev/linux-openpax). 
+"linux-hardened" is the brand name for a specific set of kernel patches and builds on top of the mainline kernel, used by some distributions. secureblue doesn't use this kernel. Instead, we apply runtime configuration changes on top of our own Fedora-based kernel [build](https://github.com/secureblue/kernel). In the future, we plan to incorporate the [OpenPAX patches](https://github.com/edera-dev/linux-openpax).
 
 There are some important ways in which our kernel is preferable to linux-hardened. For example, linux-hardened completely disables [unprivileged user namespaces](/articles/userns). This means that to use Flatpaks or Chromium-based browsers, [suid-root](https://en.wikipedia.org/wiki/Setuid) binaries are required. This is a significant security degradation. secureblue on the other hand implements SELinux-confined unprivileged user namespaces, restricting them by default but allowing them for Flatpaks and Trivalent to enable their operation without suid-root.
 
