@@ -202,7 +202,9 @@ Note that this does *not* affect the security of programs installed via Homebrew
 ### [Does secureblue use "linux-hardened"?](#linux-hardened)
 {: #linux-hardened}
 
-"linux-hardened" is the brand name for a specific set of kernel patches and builds on top of the mainline kernel, used by some distributions. secureblue doesn't use this kernel. Instead, we apply runtime configuration changes on top of our own Fedora-based kernel [build](https://github.com/secureblue/kernel). In the future, we plan to incorporate the [OpenPAX patches](https://github.com/edera-dev/linux-openpax). There are some important ways in which our kernel is preferable to linux-hardened. For example, linux-hardened completely disables [unprivileged user namespaces](/articles/userns). This means that to use flatpaks or Chromium-based browsers, [suid-root](https://en.wikipedia.org/wiki/Setuid) binaries are required. This is a significant security degradation. secureblue on the other hand implements SELinux-confined unprivileged user namespaces, restricting them by default but allowing them for Flatpaks and Trivalent to enable their operation without suid-root.
+"linux-hardened" is the brand name for a specific set of kernel patches and builds on top of the mainline kernel, used by some distributions. secureblue doesn't use this kernel. Instead, we apply runtime configuration changes on top of our own Fedora-based kernel [build](https://github.com/secureblue/kernel). In the future, we plan to incorporate the [OpenPAX patches](https://github.com/edera-dev/linux-openpax). 
+
+There are some important ways in which our kernel is preferable to linux-hardened. For example, linux-hardened completely disables [unprivileged user namespaces](/articles/userns). This means that to use Flatpaks or Chromium-based browsers, [suid-root](https://en.wikipedia.org/wiki/Setuid) binaries are required. This is a significant security degradation. secureblue on the other hand implements SELinux-confined unprivileged user namespaces, restricting them by default but allowing them for Flatpaks and Trivalent to enable their operation without suid-root.
 
 ### [Why are upgrades so large?](#upgrade-size)
 {: #upgrade-size}
@@ -227,7 +229,7 @@ If you need to update your system manually, for example after a severe CVE is pa
 {% include alert.html type='caution' content='Disabling automatic updates is a security degradation. You will no longer automatically receive security updates.' %}
 
 - `systemctl disable rpm-ostreed-automatic.timer` disables automatic system updates. To update manually, run `ujust update-system`.
-- `systemctl disable flatpak-system-update.timer` and `systemctl disable --global flatpak-user-update.timer` disable automatic updates for system flatpaks and user flatpaks, respectively. To update manually, run `flatpak update`.
+- `systemctl disable flatpak-system-update.timer` and `systemctl disable --global flatpak-user-update.timer` disable automatic updates for system Flatpaks and user Flatpaks, respectively. To update manually, run `flatpak update`.
 - `systemctl disable --global brew-upgrade.timer brew-update.timer` disables automatic Homebrew updates. To update manually, run `brew update && brew upgrade`.
 - `systemctl disable podman-auto-update.timer` and `systemctl disable --global podman-auto-update.timer` disable automatic Podman container updates for system and user containers, respectively. To update manually, use `podman update` on your containers.
 

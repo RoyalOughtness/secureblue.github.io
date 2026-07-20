@@ -26,7 +26,7 @@ permalink: /features
 - Disable install & usage of GNOME user extensions by default.
 - Disable KDE GHNS by default. <sup>[why?](https://blog.davidedmundson.co.uk/blog/kde-store-content/)</sup>
 - Remove the unmaintained and suid-root fuse2 by default.
-- Disable unprivileged user namespaces by default for the unconfined SELinux domain and the container SELinux domain, while retaining support for flatpaks, Trivalent, and other applications that need unprivileged user namespaces. <sup>[why?](/articles/userns)</sup>
+- Disable unprivileged user namespaces by default for the unconfined SELinux domain and the container SELinux domain, while retaining support for Flatpaks, Trivalent, and other applications that need unprivileged user namespaces. <sup>[why?](/articles/userns)</sup>
 - Prohibit ptrace attachment by default. <sup>[why?](https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html)</sup>
 - Locking down Flatpak permissions to close sandbox escapes. <sup>[why?](/articles/flatpak)</sup>
 
