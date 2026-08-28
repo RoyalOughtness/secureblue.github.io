@@ -493,7 +493,7 @@ Please note, the instructions provided by the Arch Wiki article for manually add
 ### [How do I disable thumbnailing?](#thumbnailing)
 {: #thumbnailing}
 
-Given that the sandboxing provided for thumbnailing by desktop environments is at best <a href="/images#security-recommendation" target="_blank" class="button">weak</a>, it's recommended that users disable thumbnailing altogether to protect against <a href="https://scarybeastsecurity.blogspot.com/2016/11/0day-exploit-compromising-linux-desktop.html">attacks via thumbnailers</a>. Disabling thumbnailing is currently not supported by COSMIC Files but it has been [proposed](https://github.com/pop-os/cosmic-files/issues/1216). For other systems, follow the instructions below.
+Given that the sandboxing provided for thumbnailing by desktop environments is at best <a href="/images#security-recommendation">weak</a>, it's recommended that users disable thumbnailing altogether to protect against <a href="https://scarybeastsecurity.blogspot.com/2016/11/0day-exploit-compromising-linux-desktop.html">attacks via thumbnailers</a>. Disabling thumbnailing is currently not supported by COSMIC Files but it has been [proposed](https://github.com/pop-os/cosmic-files/issues/1216). For other systems, follow the instructions below.
 
 #### GNOME
 
