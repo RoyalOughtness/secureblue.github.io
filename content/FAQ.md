@@ -411,10 +411,10 @@ Attempting to bubblewrap a program without first enabling the ability toggled by
 ### [How do I manage potentially dangerous files or attachments?](#safe-pdfs)
 {: #safe-pdfs}
 
-The program [Dangerzone](https://dangerzone.rocks/) is designed to sanitize potentially dangerous PDFs, office documents, or images in a sandboxed environment. To install Dangerzone, run:
+The program [Dangerzone](https://dangerzone.rocks/) is designed to sanitize potentially dangerous PDFs, office documents, or images in a sandboxed environment. To enable Dangerzone, run:
 
 ```
-ujust install-dangerzone
+ujust enable-dangerzone
 ```
 
 Note that this comes with a security trade-off: it requires enabling [container-domain user namespaces](#container-userns) and [container-only restricted ptrace](#anticheat), allowing container processes to ptrace-attach to child processes. Dangerzone runs Podman under the hood, and requires [gVisor](https://gvisor.dev/) to run document processing workloads in an isolated sandbox, [which needs Linux's ptrace subsystem to intercept system calls](https://gvisor.dev/blog/2024/09/23/safe-ride-into-the-dangerzone/).
