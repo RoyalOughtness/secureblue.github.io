@@ -6,6 +6,8 @@ permalink: /features
 
 # Features
 
+This list is not exhaustive. Secureblue is continuously iterating and improving. Subscribe to secureblue's [release notes](/faq#releases) to keep up to date on the latest improvements.
+
 ## [Exploit mitigation](#exploit-mitigation)
 {: #exploit-mitigation}
 
