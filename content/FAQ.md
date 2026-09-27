@@ -488,6 +488,12 @@ Within GNOME Files preferences, set "Show Thumbnails" to "On This Device Only" o
 
 <img alt="GNOME thumbnailing configuration" src="/assets/gnome_thumbnail.png" />
 
+Then, run the following command:
+
+```
+gsettings set org.gnome.desktop.thumbnailers disable-all false
+```
+
 #### KDE
 
 Within Dolphin settings, check items under the Previews tab in the Interface section according to your preferences:
