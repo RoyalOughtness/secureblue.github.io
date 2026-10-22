@@ -287,23 +287,27 @@ There is no secure way to install Steam, and Steam itself has numerous security 
 
 To do so, you need to:
 
-1. Enable Xwayland:
+1. Enable 32bit support: 
+
+``` rpm-ostree kargs --delete-if-present="ia32_emulation=0"```
+
+2. Enable Xwayland:
 
 ```ujust set-xwayland on```
 
-2. Enable Flathub unfiltered (allows unverified Flatpaks):
+3. Enable Flathub unfiltered (allows unverified Flatpaks):
 
 ```ujust set-flathub-unfiltered on```
 
-3. Install the Steam Flatpak: 
+4. Install the Steam Flatpak: 
 
 ```flatpak install -y --user flathub com.valvesoftware.Steam```
 
-4. Drop the `hardened_malloc` override from the Steam Flatpak:
+5. Drop the `hardened_malloc` override from the Steam Flatpak:
 
 ```flatpak override --user --unset-env=LD_PRELOAD --nofilesystem=host-os com.valvesoftware.Steam```
 
-5. Grant the Steam Flatpak access to networking, IPC, Xwayland, Pulseaudio, multiarch, and per-application shared memory:
+6. Grant the Steam Flatpak access to networking, IPC, Xwayland, Pulseaudio, multiarch, and per-application shared memory:
 
 ```flatpak override --user --share=network --share=ipc --socket=x11 --socket=pulseaudio --allow=multiarch --allow=per-app-dev-shm com.valvesoftware.Steam```
 
