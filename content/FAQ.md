@@ -288,7 +288,7 @@ There is no secure way to install Steam, and Steam itself has numerous security 
 To do so, you need to:
 
 1. Enable 32bit support:
-``` rpm-ostree kargs --delete-if-present="ia32_emulation=0"```
+```rpm-ostree kargs --delete-if-present="ia32_emulation=0"```
 2. Enable Xwayland:
 ```ujust set-xwayland on```
 3. Reboot to apply the changes from steps 1 and 2:
