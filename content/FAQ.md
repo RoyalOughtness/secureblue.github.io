@@ -295,19 +295,23 @@ To do so, you need to:
 
 ```ujust set-xwayland on```
 
-3. Enable Flathub unfiltered (allows unverified Flatpaks):
+3. Reboot to apply the changes from steps 1 and 2:
+
+```systemctl reboot```
+
+4. Enable Flathub unfiltered (allows unverified Flatpaks):
 
 ```ujust set-flathub-unfiltered on```
 
-4. Install the Steam Flatpak: 
+5. Install the Steam Flatpak: 
 
 ```flatpak install -y --user flathub com.valvesoftware.Steam```
 
-5. Drop the `hardened_malloc` override from the Steam Flatpak:
+6. Drop the `hardened_malloc` override from the Steam Flatpak:
 
 ```flatpak override --user --unset-env=LD_PRELOAD --nofilesystem=host-os com.valvesoftware.Steam```
 
-6. Grant the Steam Flatpak access to networking, IPC, Xwayland, Pulseaudio, multiarch, and per-application shared memory:
+7. Grant the Steam Flatpak access to networking, IPC, Xwayland, Pulseaudio, multiarch, and per-application shared memory:
 
 ```flatpak override --user --share=network --share=ipc --socket=x11 --socket=pulseaudio --allow=multiarch --allow=per-app-dev-shm com.valvesoftware.Steam```
 
