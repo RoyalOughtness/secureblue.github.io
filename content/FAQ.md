@@ -287,7 +287,7 @@ There is no secure way to install Steam, and Steam itself has numerous security 
 
 To do so, you need to:
 
-1. Enable 32bit support: 
+1. Enable 32bit support:
 
 ``` rpm-ostree kargs --delete-if-present="ia32_emulation=0"```
 
@@ -303,7 +303,7 @@ To do so, you need to:
 
 ```ujust set-flathub-unfiltered on```
 
-5. Install the Steam Flatpak: 
+5. Install the Steam Flatpak:
 
 ```flatpak install -y --user flathub com.valvesoftware.Steam```
 
