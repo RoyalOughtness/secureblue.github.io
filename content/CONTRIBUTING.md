@@ -101,7 +101,6 @@ Before jumping in to a contribution that goes beyond simple bugfixes, it's impor
 2. If referencing an existing GitHub issue, ask other contributors to ensure that the issue is up to date. Issues can refer to problems that are partially solved or that need to be solved in different ways given other changes.
 3. Get buy-in on the scope and design of the changes from other contributors. This ensures you don't invest time on a change only to run into high-level scope or design feedback at review time. To get buy-in, ping @Contributors in the #dev channel on Discord with a link to the GitHub issue you intend to work on and what changes you plan to make.
 
-
 ### [Pull Requests](#pull-requests)
 {: #pull-requests}
 
