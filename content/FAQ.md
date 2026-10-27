@@ -299,8 +299,11 @@ To do so, you need to:
 ```flatpak install -y --user flathub com.valvesoftware.Steam```
 6. Drop the `hardened_malloc` override from the Steam Flatpak:
 ```flatpak override --user --unset-env=LD_PRELOAD --nofilesystem=host-os com.valvesoftware.Steam```
-7. Grant the Steam Flatpak access to networking, IPC, Xwayland, Pulseaudio, multiarch, and per-application shared memory:
+
+Additionally, if you've used the `flatpak-permissions-lockdown` command, you'll need to override it by granting access to networking, IPC, XWayland, PulseAudio, multiarch, and per-application shared memory:
 ```flatpak override --user --share=network --share=ipc --socket=x11 --socket=pulseaudio --allow=multiarch --allow=per-app-dev-shm com.valvesoftware.Steam```
+
+Note that to use controllers, you must also grant `device=input`. Games with anti-cheats will likely require granting `allow=devel` alongside the steps below.
 
 ### [How do I enable anti-cheat support?](#anticheat)
 {: #anticheat}
