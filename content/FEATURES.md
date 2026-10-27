@@ -70,7 +70,6 @@ This list is not exhaustive. Secureblue is continuously iterating and improving.
 {: #general-ease}
 
 - Provide out-of-the-box support for patent-encumbered codecs and drivers, which Fedora doesn't provide for legal reasons.
-- Provide server images with the ZFS kmod and tooling preinstalled (`-zfs`).
 - Provide images for any desired Nvidia driver and kmod configuration: `main` images with Nouveau + NVK, `nvidia` images with the Nvidia-closed kmod and drivers, and `nvidia-open` images with the Nvidia-open kmod and drivers.
 - Provide tooling to easily change desktop environments by rebasing between our images (`ujust rebase-secureblue`).
 - Install [Homebrew](https://brew.sh/), which provides an easy way to install and update many CLI tools, and set up Homebrew to use [brew-proxy](https://codeberg.org/HastD/brew-proxy) for additional security. <sup>[details](/faq#brew)</sup>

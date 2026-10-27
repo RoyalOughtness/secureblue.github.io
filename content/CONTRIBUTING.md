@@ -18,11 +18,13 @@ And if you like the project, but just don't have time to contribute, that's fine
 ## [Table of Contents](#table-of-contents)
 
 - [Code of Conduct](#code-of-conduct)
+- [Scope](#scope)
 - [I Have a Question](#i-have-a-question)
 - [I Want To Contribute](#i-want-to-contribute)
   - [Legal Notice](#legal-notice)
   - [AI Content Policy](#ai-content)
   - [Reporting Bugs](#reporting-bugs)
+  - [Before You Start](#before-you-start)
   - [Pull Requests](#pull-requests)
   - [How to test incoming changes](#how-to-test-incoming-changes)
 - [Building with GitHub Actions (recommended)](#building-ga)
@@ -41,6 +43,21 @@ And if you like the project, but just don't have time to contribute, that's fine
 This project and everyone participating in it is governed by the [Code of Conduct](/code-of-conduct).
 By participating, you are expected to uphold this code. Please report unacceptable behavior
 to [secureblueadmin@proton.me](mailto:secureblueadmin@proton.me). Do not send support or information requests to this email.
+
+## [Scope](#scope)
+{: #scope}
+
+Secureblue is kept narrowly scoped in order to ensure a security focus, code quality, and maintainability. In short, all secureblue features should be in line with its [goal](https://secureblue.dev/#about): building a maximally secure desktop and server Linux operating system. The following general rules should be used when evaluating whether new or existing functionality is in scope:
+
+- Added functionality must serve a security-related purpose, improve the viability of other security-improving functionality, or improve the viability of image-based distribution (e.g. Brew, package inclusions for Brew-unavailable general-purpose packages).
+- Functionality that breaks a modern use case must provide tooling to configure or disable that functionality if no such tooling already exists.
+- Tooling (e.g. ujusts) must help the user configure, audit, toggle secureblue's added functionality, not existing upstream features or unrelated third party applications.
+- Changes that would be accepted upstream must be submitted upstream.
+- Package sources must not grant trust to third parties except when explicitly necessary (e.g. packages Fedora can't distribute due to patent encumberment), and must mitigate that trust if necessary (e.g. leveraging provenance).
+- Trivalent's scope is defined in its README [here](https://github.com/secureblue/Trivalent/#scope).
+- NVIDIA hardware enablement is in-scope for NVIDIA images.
+- Minimal branding is in-scope. Broader cosmetic changes are not.
+- Images for additional desktop environments must meet all of the [criteria](https://secureblue.dev/faq#new-images).
 
 ## [I Have a Question](#i-have-a-question)
 {: #i-have-a-question}
@@ -74,6 +91,15 @@ A good bug report should describe the issue in detail. Generally speaking:
 - Image and Version
 - Possibly your input and the output
 - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
+
+### [Before You Start](#before-you-start)
+{: #before-you-start}
+
+Before jumping in to a contribution that goes beyond simple bugfixes, it's important to follow a couple quick prerequisite steps that help save time and effort:
+
+1. Create a GitHub issue for the change if it doesn't already exist. This gives other contributors a space to provide input and discuss substantial changes.
+2. If referencing an existing GitHub issue, ask other contributors to ensure that the issue is up to date. Issues can refer to problems that are partially solved or that need to be solved in different ways given other changes.
+3. Get buy-in on the scope and design of the changes from other contributors. This ensures you don't invest time on a change only to run into high-level scope or design feedback at review time. To get buy-in, ping @Contributors in the #dev channel on Discord with a link to the GitHub issue you intend to work on and what changes you plan to make.
 
 ### [Pull Requests](#pull-requests)
 {: #pull-requests}
