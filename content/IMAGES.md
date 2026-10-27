@@ -87,24 +87,17 @@ Note that there are no ISOs available for experimental images. If you want to tr
 {: #coreos}
 {% include alert.html type='note' content='After you finish setting up your <a href="https://fedoraproject.org/coreos/">Fedora CoreOS</a> installation, you will need to disable <code>zincati.service</code> before rebasing to securecore.' %}
 
-| Name                                  | Base   | NVIDIA Support                                                                               | ZFS Support | ARM64 Support |
-|---------------------------------------|--------|----------------------------------------------------------------------------------------------|-------------|---------------|
-| `securecore-main-hardened`            | CoreOS | Reverse engineered Nouveau open source driver (not recommended)                              | No          | Beta          |
-| `securecore-nvidia-hardened`          | CoreOS | Proprietary NVIDIA driver with closed source kernel modules (recommended for pre-Turing)     | No          | No            |
-| `securecore-nvidia-open-hardened`     | CoreOS | Proprietary NVIDIA driver with open source kernel modules (recommended for Turing and later) | No          | No            |
-| `securecore-zfs-main-hardened`        | CoreOS | Reverse engineered Nouveau open source driver (not recommended)                              | Yes         | No            |
-| `securecore-zfs-nvidia-hardened`      | CoreOS | Proprietary NVIDIA driver with closed source kernel modules (recommended for pre-Turing)     | Yes         | No            |
-| `securecore-zfs-nvidia-open-hardened` | CoreOS | Proprietary NVIDIA driver with open source kernel modules (recommended for Turing and later) | Yes         | No            |
+| Name                                  | Base   | NVIDIA Support                                                                               | ARM64 Support |
+|---------------------------------------|--------|----------------------------------------------------------------------------------------------|---------------|
+| `securecore-main-hardened`            | CoreOS | Reverse engineered Nouveau open source driver (not recommended)                              | Beta          |
+| `securecore-nvidia-hardened`          | CoreOS | Proprietary NVIDIA driver with closed source kernel modules (recommended for pre-Turing)     | No            |
+| `securecore-nvidia-open-hardened`     | CoreOS | Proprietary NVIDIA driver with open source kernel modules (recommended for Turing and later) | No            |
 
 ### [IoT](#iot)
 {: #iot}
 
-| Name                           | Base | NVIDIA Support                                                                               | ZFS Support | ARM64 Support |
-|--------------------------------|------|----------------------------------------------------------------------------------------------|-------------|---------------|
-| `iot-main-hardened`            | IoT  | Reverse engineered Nouveau open source driver (not recommended)                              | No          | Beta          |
-| `iot-nvidia-hardened`          | IoT  | Proprietary NVIDIA driver with closed source kernel modules (recommended for pre-Turing)     | No          | No            |
-| `iot-nvidia-open-hardened`     | IoT  | Proprietary NVIDIA driver with open source kernel modules (recommended for Turing and later) | No          | No            |
-| `iot-zfs-main-hardened`        | IoT  | Reverse engineered Nouveau open source driver (not recommended)                              | Yes         | No            |
-| `iot-zfs-nvidia-hardened`      | IoT  | Proprietary NVIDIA driver with closed source kernel modules (recommended for pre-Turing)     | Yes         | No            |
-| `iot-zfs-nvidia-open-hardened` | IoT  | Proprietary NVIDIA driver with open source kernel modules (recommended for Turing and later) | Yes         | No            |
-
+| Name                           | Base | NVIDIA Support                                                                               | ARM64 Support |
+|--------------------------------|------|----------------------------------------------------------------------------------------------|---------------|
+| `iot-main-hardened`            | IoT  | Reverse engineered Nouveau open source driver (not recommended)                              | Beta          |
+| `iot-nvidia-hardened`          | IoT  | Proprietary NVIDIA driver with closed source kernel modules (recommended for pre-Turing)     | No            |
+| `iot-nvidia-open-hardened`     | IoT  | Proprietary NVIDIA driver with open source kernel modules (recommended for Turing and later) | No            |
